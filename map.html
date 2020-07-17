@@ -7,4 +7,82 @@
 <body>
 
 </body>
+<script>
+    var array1 = [1,4,9,16];
+    const map1 = array1.map(x => x *2);
+    console.log(map1);// [2, 8, 18, 32]
+    // 如果箭头函数只有一行语句，可以省略大括号，并且省略return关键字。
+    const map2 = array1.map(x => {
+        if (x == 4) {
+            return x * 2;
+        }
+    });
+    console.log(map2); // [undefined, 8, undefined, undefined]
+    //之所以会出现undefined，是因为map()方法创建了一个新数组，但新数组并不是在遍历完array1后才被赋值的，而是每遍历一次就得到一个值。
+    const map3 = array1.map(x => {
+        if (x ==9) {
+            return x*2
+        }
+        return x
+    })
+    console.log(map3) //[1, 4, 18, 16]
+    // map()方法不会改变原数组，forEach()会改变原数组
+    const sweetArray = [2, 3, 4, 5, 35]
+    const sweeterArray = sweetArray.map(sweetItem => {
+        return sweetItem * 2
+    })
+    console.log(sweetArray) // [2, 3, 4, 5, 35]
+    console.log(sweeterArray) // [4, 6, 8, 10, 70]
+    //.map() 属于 Array 原型。 我们如何使用它将字符串转换为数组。 不用担心，我们不需要再开发一个方法来处理字符串，而是使用特殊的 .call() 方法。
+    //JavaScript 中的所有内容都是对象，方法只是附加到这些对象的函数。 .call() 允许我们利用另一个对象的上下文。 因此，我们将数组中的 .map() 上下文复制到字符串。
+    const name = 'chenjunmin'
+    const map = Array.prototype.map
+    let newName = map.call(name, item =>`55555${item}`)
+
+
+    console.log(newName) // ["55555c", "55555h", "55555e", "55555n", "55555j", "55555u", "55555n", "55555m", "55555i", "55555n"]
+
+    const myUsers = [
+        { name: 'chuloo', likes: 'grilled chicken' },
+        { name: 'chris', likes: 'cold beer' },
+        { name: 'sam', likes: 'fish biscuits' }
+    ]
+
+    const usersByFood = myUsers.map(item => {
+        const container = {};
+
+        container[item.name] = item.likes;
+        container.age = item.name.length * 10;
+
+        return container;
+    })
+
+
+    console.log(usersByFood);
+    // [{chuloo: "grilled chicken", age: 60}, {chris: "cold beer", age: 50}, {sam: "fish biscuits", age: 30}]
+
+
+    // 链式调用，因为有返回值
+    var myArr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+
+    var result = myArr
+        .map(function(element) {
+// 数值大于5的数值视为5
+            if (element > 5)
+                return 5;
+
+            return element;
+        })
+        .reduce(function(prev, element) {
+// 与之前的数值加总，回传后代入下一轮的处理
+            return prev + element;
+        }, 0);
+
+    // 40
+    console.log(result);
+
+    var myArr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+    let result = myArr.map(m => m>5 ? 5 : m).reduce((x,y) => x+y);
+    console.log(result); // 40
+</script>
 </html>
