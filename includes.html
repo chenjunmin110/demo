@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // Array已经提供了indexOf用来查找某个元素的位置，如果不存在就返回-1，但是这个函数在判断数组是否包含某个元素时有两个小不足，第一个是它会返回-1和元素的位置来表示是否包含，在定位方面是没问题，就是不够语义化。另一个问题是不能判断是否有NaN的元素。
+    const arr1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', NaN]
+    console.log('%s', arr1.indexOf(NaN)) // -1
+
+ // ES6提供了Array.includes()函数判断是否包含某一元素，除了不能定位外，解决了indexOf的上述的两个问题。它直接返回true或者false表示是否包含元素，对NaN一样能有有效。
+
+    const arr1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', NaN]
+    console.log('%s', arr1.includes('c')) //true
+    console.log('%s', arr1.includes('z')) //false
+    console.log('%s', arr1.includes(NaN)) // true
+
+    //includes()函数的第二个参数表示判断的起始位置。
+    const arr1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', NaN]
+    console.log('%s', arr1.includes('d', 1)) //true
+    console.log('%s', arr1.includes('d', 3)) //true
+    console.log('%s', arr1.includes('d', 4)) //false
+
+    // 第二个参数也可以是负数，表示从右数过来第几个，但是不改变判断搜索的方向，搜索方向还是从左到右。
+    console.log('%s', arr1.includes('k', -1)) // false
+    console.log('%s', arr1.includes('k', -2)) //false
+    console.log('%s', arr1.includes('i', -3)) // false
+</script>
+</html>
