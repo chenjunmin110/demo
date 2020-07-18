@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+        margin: 100px auto;
+        width: 300px;
+        height: 400px;
+        border: 1px solid #000;
+    }
+    ul>li{
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        cursor: default;
+    }
+
+    .current{
+        background-color: brown;
+    }
+</style>
+<body>
+<ul>
+    <li class="current">我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+    <li>我是第6个li</li>
+    <li>我是第7个li</li>
+    <li>我是第8个li</li>
+</ul>
+
+</body>
+<script>
+    let item = document.querySelectorAll('li')
+    let active = 0;
+    for (let i = 0; i < item.length; i++) {
+        item[i].onclick = function () {
+            item[active].className = ''
+            this.className = 'current'
+            active = i
+            console.log(active, this);
+            
+        }
+        
+    }
+    // es6之前的写法
+    var items = document.querySelectorAll("li");
+    var previousIndex = 0;
+    for (var i = 0; i < items.length; i++) {
+        (function (index) {
+            items[index].onclick = function () {
+                items[previousIndex].className = "";
+                this.className = "current";
+                previousIndex = index;
+            };
+        })(i);
+    }
+</script>
+</html>
