@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 查找元素，返回找到的值，找不到返回undefined。从左到右，只返回第一个
+    const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    var ret1 = arr1.find((value, index, arr) => {
+        return value > 4
+    })
+    console.log(ret1) //5
+    var ret2 = arr1.find((value, index, array) => {
+        return value > 14
+    })
+    console.log(ret2) //undefined
+//查找元素，返回找到的index，找不到返回-1。
+    var ret3 = arr1.findIndex((value, index, arr) => {
+        return value > 4
+    })
+
+    var ret4 = arr1.findIndex((value, index, arr) => {
+        return value > 14
+    })
+    console.log('%s', ret3) //4
+    console.log('%s', ret4) // -1
+</script>
+</html>
