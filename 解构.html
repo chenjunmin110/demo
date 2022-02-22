@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  const arr1 = [1, 2, 3, 4, 5, 6]
+  
+  const [a1, b1] = arr1
+  console.log(a1, b1);
+  
+  const arr2 = [1, [56, 7]]
+  
+  const [a2, [b2, c2]] = arr2
+  console.log(a2, b2, c2);
+  
+  const arr3 = [1, 2, 3,4 ]
+  
+  const [a3, ...b3 ] = arr3
+  console.log(a3, b3); //1 , [2, 3, 4]
+  
+  // 解构赋值可以指定默认值,
+  
+  const [a4 = true] = [] // true
+  const [aa4, bb4=1] = [11] // 11 ,1
+  const [aaa4, bbb4= 22] = [11, undefined] //11 22
+  console.log(a4, aa4, bb4, aaa4, bbb4);
+  function afn() {
+    return 1
+  }
+  
+  var [afn = afn()] = [2] // 要使用var，let afn两次了
+  console.log('afn:', afn);
+  // 解构赋值可以指定默认值,但是该变量必须是已经声明
+  let [d= 1, e= d] = [] // d=1,e=1
+  let [g=2, h =g] = [2] // g=2,h=2
+  let [ i= 3, j=i] = [11, 22] // i=11 j=22
+  /*let [k=m, m=1] = [] // 报错*/
+  
+  
+  
+  // 对象结构
+  
+  let {objA, objB} = {objB: 1, objA:3}
+  console.log('objA:',objA, 'objB:',objB);
+  
+  let {ab} = {objB: 1, objA:3}
+  console.log('ab:',ab); //取不到值--undefined
+  
+  let {aaa, xyz: bbb} = {aaa: 'aaa', xyz: 'bbb'}
+  console.log(aaa, bbb);// aaa ;对象的解构赋值内部机制找到同名属性，然后再赋值给对应变量,真正被赋值的是后者不是前者
+  
+  
+  let helloworld= {first: 'hello', last: 'world'}
+  let {first: e1, last:f1} = helloworld //e1= heloo, f1: world
+
+</script>
+
+</body>
+</html>

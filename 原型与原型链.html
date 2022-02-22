@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script>
+  // 原型 prototype  是函数特有，对象和数组是没有原型的
+  // 原型链 __proto__ ==> [[prototype]] 大家都有的
+  
+  function Person() {
+  
+  }
+  Person.prototype.age= 18
+  Person.prototype.name= '小明'
+  Person.prototype.fn = function () {
+    console.log(this.age);
+  }
+  let person1 = new Person()
+  person1.age= 28
+  console.log(person1.name);
+  person1.fn() // 28
+
+  console.log(person1);
+
+  console.log(Person.prototype.constructor === Person);
+
+  // 从当前实例属性去找，没有再去找原型链上去找，
+  console.log('person1.__proto__:',person1.__proto__);
+  console.log('Person.prototype:',Person.prototype);
+  
+  console.log('Person.prototype.__proto__:',Person.prototype.__proto__);
+  console.log('Object.prototype:',Object.prototype);
+
+  console.log('Object.prototype.__proto__:',Object.prototype.__proto__);
+  
+  
+  
+</script>
+
+</body>
+</html>

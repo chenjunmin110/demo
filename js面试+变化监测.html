@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  console.log(total); // undefined
+  var total = 0;
+  function fun4(num1, num2) {
+    console.log(total) // undefined ,为什么不是0，因为先找其作用域的声明在找外面的
+    var total = num1+num2;
+    console.log(total); // 30
+  }
+  fun4(10,20)
+  console.log(total); // 0
+  
+  
+  class Observer {
+    constructor(value) {
+      this.value = value;
+      
+      if (Array.isArray(this.value)) {
+      
+      } else {
+        this.walk(value)
+      }
+    }
+    
+    walk (obj) {
+      const keys = Object.keys(obj);
+      for (let i = 0; i<keys.length;i++) {
+        defineReactive(obj, keys[i])
+      }
+    }
+  }
+
+  function defineReactive(obj, key, val) {
+    
+    if(arguments.length===2) {
+      val = obj[key]
+    }
+    Object.defineProperty(obj, key, {
+      enumerable: true,
+      configurable: true,
+      get () {
+        console.log(`val====${val}`);
+        return val
+      },
+      set (newVal) {
+        
+        if (val ===newVal) {
+          return
+        }
+        console.log(`newVal====${newVal}`);
+        val = newVal
+      }
+    })
+  }
+  
+  
+  const obj = new Observer({
+    aa: 5555
+  })
+
+  console.log(obj.value.aa);
+
+
+</script>
+
+</body>
+</html>

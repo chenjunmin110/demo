@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  .box{
+    background: green;
+    width: 200px;
+    height: 200px;
+    
+  }
+</style>
+<body>
+  <input type="text">
+  <div class="box"></div>
+
+</body>
+
+<script>
+  
+  //防抖就是函数只允许一个存在，多次变为一次，去掉前面的，只触发最后一次
+  
+  let input =document.querySelector('input')
+  input.addEventListener('input', antiShake(demo, 3000))
+  function antiShake(fn, wait) {
+    let timeOut = null
+    return args=>{
+      if (timeOut) clearTimeout(timeOut)
+      timeOut = setTimeout(fn, wait)
+    }
+  }
+  
+  function demo() {
+    console.log('send')
+  }
+  
+  // 节流，一定时间内多个事件合为一个，先触发前面的一个事件，后面不触发。
+  
+  let box = document.querySelector(".box")
+  box.addEventListener("touchmove", throttle(demo, 1000))
+  
+  
+  function throttle(event, time) {
+    let timer = null
+    return function () {
+      if(!timer) {
+        timer = setTimeout(()=>{
+          event()
+          timer = null
+        }, time)
+      }
+    }
+  }
+</script>
+</html>

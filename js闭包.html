@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // 表现形势，方法里返回一个方法
+  function a() {
+    let a1 = 1
+    return aa()
+    function aa() {
+      return a1
+    }
+    
+  }
+
+  console.log(a());
+
+  // 存在的意义
+  // 2.1延长变量的生命周期
+  // 2.2创建私有变量，闭包常驻内存，
+  // 2.3沟通内外部的桥梁
+  // 2.4全局变量会污染局部变量，全局变量不会被回收
+  // js执行机制，局部变量会存在AO，当被调用后，被回收使用不了
+  
+  
+  // 当前作用域在拿不到，去离最近的作用域去拿。
+  let name = '小明';
+  function fn2() {
+    let name = '小白'
+    function fn3() {
+      let name = '小黑'
+      console.log(name)
+    }
+    fn3()
+  }
+  fn2()
+  
+  
+  let makeCounter = function () {
+    let num = 0;
+    function changeBy(val) {
+      num +=val
+    }
+    
+    return{
+      add: function () {
+        changeBy(1)
+      },
+      reduce: function () {
+        changeBy(-1)
+      },
+      value: function () {
+        return num
+      }
+    }
+  }
+  
+  let counter1= makeCounter();
+  let counter2= makeCounter();
+  console.log(counter1.value());
+  counter1.add()
+  counter1.add()
+  counter2.add()
+  console.log(counter1.value());
+  console.log(counter2.value());
+  // 保持独立的词法作用域
+  // 面向对象编程---数据的隐藏和封装
+  
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  
+  function add(num1, num2) {
+    let num = num1 + num2
+    
+    if (num2+1 >100) {
+      return num
+    } else {
+      return add(num, num2+1)
+    }
+  }
+  
+  let b = add(1,2)
+  console.log(b);
+</script>
+
+</body>
+</html>

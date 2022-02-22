@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 1.forEach没有返回值
+  // 2.不能break
+  // 3.遍历的是value,
+  // 4.会改变原数组
+  const arr1 = [1, 2, 3, 4, 5, 6]
+  
+  arr1.forEach((item, index, arr)=>{
+    return arr1[index]  = item * 2
+  })
+  
+  console.log(arr1);
+
+  // 1.forEach有返回值，生成新数组
+  // 2.不能break
+  // 3.遍历的是value,
+  // 4.会改变原数组
+
+  const arrMap1 = [1, 2, 3, 4, 5, 6]
+
+  let bb = arrMap1.map((item, index, arr)=>{
+    return item + 3
+  })
+
+  console.log(bb);
+
+</script>
+
+</body>
+</html>
