@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  // this,箭头函数
+  
+  // let func = (a)=>{a}; // undefined
+  let func = (a)=>a; // 1
+
+  console.log(func(1));
+  
+  // 箭头函数没有this，谁靠近就认谁当爹
+
+  var name = "windowsName";
+
+  var a = {
+    name : "Cherry",
+  
+    func1: function () {
+      console.log(this.name)
+    },
+  
+    func2: function () {
+      setTimeout( () => {
+        this.func1()
+      },100);
+    }
+  
+  };
+  
+
+  a.func2()     // Cherry
+
+  var id = 'GLOBAL';
+  var obj = {
+    id: 'OBJ',
+    a: function(){
+      console.log(this.id);
+    },
+    b: () => {
+      console.log(this.id);
+    }
+  };
+
+  obj.a();    // 'OBJ',最后是obj对象调用的a（）,所以对象的id指向'OBJ'
+  obj.b();    // 'GLOBAL'，这个不看谁最后调用，只看上一级的函数是谁，看起了也像是obj,但是不是定义对象的{}无法形成一个单独执行环境，所以还要往上走，这时是指向window这个大的执行环境，所以是'GLOBAL',必须是window或者function
+
+ // bind
+  var a1 ={
+    name : "Cherry",
+    fn : function (a,b) {
+      console.log( a + b)
+    }
+  }
+
+  var b = a1.fn;
+  b.bind(a1,1,2)()
+  
+  // apply
+  
+  var a2 = {
+    name : "Cherry",
+    fn : function (a,b) {
+      console.log( a + b)
+    }
+  }
+
+  var b2 = a2.fn;
+
+  b2.apply(a2, [1,2])
+  
+  // call
+  var a3 = {
+    name : "Cherry",
+    fn : function (a,b) {
+      console.log( a + b)
+    }
+  }
+  var b3 = a3.fn;
+  b3.call(a3, 1,2)
+  
+  // arguements
+  
+  
+  function func2(a) {
+    
+    console.log(arguments[0])
+    arguments[0] = 222
+  
+    console.log(a)
+  }
+
+  func2(111)
+  
+  // 默认值
+  
+  function func3(a=1) {
+    console.log(a);
+  }
+  
+  func3()
+  
+  
+
+</script>
+
+</body>
+</html>
