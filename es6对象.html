@@ -5,6 +5,36 @@
   <title>Title</title>
 </head>
 <body>
+<script>
+  
+  // Map构造函数接受一个数组作为参数
+  const map = new Map([
+// 指定了两个键 name 和 tile
+// 数组的成员是一个个表示键值对的数组
+    ['name', '张三'],
+    ['title', 'Author']
+  ]);
+
+  console.log(map);
+
+  console.log(map.get('name'));
+  console.log(map.set('name', '3333'));
+  console.log(map.has('name'));
+
+  for (let [key, value] of map.entries()) {
+    console.log(key, value)
+  }
+  
+  for (let item of map.keys()) {
+    console.log(item)
+  }
+
+  for (let item of map.values()) {
+    console.log(item)
+  }
+  
+
+</script>
 
 </body>
 </html>
