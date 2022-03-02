@@ -32,7 +32,20 @@
   for (let item of map.values()) {
     console.log(item)
   }
+  // objaa.hasOwnProperty，对象上有没有这个属性
+  objaa = {
+    a: '5555',
+    b: 'bbbbb'
+  }
+  console.log(objaa.hasOwnProperty('a'));
+  console.log(Object.getOwnPropertyNames(objaa));
+  console.log(Object.keys(objaa)) // ['b']
+  console.log(Object.values(objaa)) // ['3']
+  console.log(Object.entries(objaa))
   
+  let ooo = Object.assign({}, objaa, {c: '44444'})
+  console.log(ooo);
+
 
 </script>
 
