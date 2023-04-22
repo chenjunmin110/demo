@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 冒泡排序
+    // let arr = [8, 2, 9, 6, 7,]
+    //
+    // for (let i = 0; i < arr.length; i++) {
+    //     for (let j = 0; j < arr.length-i; j++) {
+    //         if (arr[j] > arr[j + 1]) {
+    //             let temp = arr[j];
+    //             arr[j] = arr[j + 1];
+    //             arr[j + 1] = temp
+    //         }
+    //     }
+    // }
+    //
+    // console.log(arr)
+    //
+    // let arr1 = 'abcdef'.split('')
+    // // 数组暴力破解
+    //
+    // for (let i = 0; i < arr1.length; i++) {
+    //     for (let j = i; j <arr1.length; j++) {
+    //         let temp = arr1.slice(i, j+1)
+    //         console.log(temp)
+    //     }
+    // }
+    //
+    // // 字符串暴力破解
+    //
+    // let str = 'abcdef';
+    // for (let i = 0; i < str.length; i++) {
+    //     for (let j = i; j < str.length; j++) {
+    //         let temp = str.substr(i, j-i+1)
+    //         console.log(temp)
+    //     }
+    // }
+
+    // 矩阵扩散
+
+    // let str = '4,4,0,0,3,3'
+    // let strArr = str.split(',')
+    // let m =parseInt(strArr[0]),n=parseInt(strArr[1])
+    // let one1 = strArr[2],one2 = strArr[3]
+    // let two1 = strArr[4],two2 = strArr[5]
+    // let arr = []
+    // for(let i=0;i<m;i++){
+    //     let item = []
+    //     for(let o=0;o<n;o++){
+    //         item.push(0)
+    //     }
+    //     arr.push(item)
+    // }
+    // console.log(arr);
+    // arr[one1][one2] = 1
+    // arr[two1][two2] = 1
+    // let time = 0
+    // test()
+    // console.log(time);
+    //
+    // function test(){
+    //     while (!checkOver()){
+    //         let arr2 = JSON.parse(JSON.stringify(arr))
+    //         for(let i=0;i<arr.length;i++){
+    //             for(let o=0;o<arr[i].length;o++){
+    //                 if(arr[i][o]===1){
+    //                     arr2[i][o]=1
+    //                     // 上
+    //                     if(i-1>=0){
+    //                         arr2[i-1][o] = 1
+    //                     }
+    //                     // 下
+    //                     if(i+1<=arr.length-1){
+    //                         arr2[i+1][o] = 1
+    //                     }
+    //                     // 左
+    //                     if(o-1>=0){
+    //                         arr2[i][o-1] = 1
+    //                     }
+    //                     // 右
+    //                     if(o+1<=arr[i].length-1){
+    //                         arr2[i][o+1] = 1
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         arr = arr2
+    //         time++
+    //     }
+    // }
+    // function checkOver(){
+    //     for(let i of arr){
+    //         for(let o of i){
+    //             if(o===0){
+    //                 return false
+    //             }
+    //         }
+    //     }
+    //     return true
+    // }
+
+
+    // 日志排序
+    // let arr = [
+    //     '1:1:09.211',
+    //     '08:01:22.0',
+    //     '23:41:08.023'
+    // ]
+    // function test(arr) {
+    //     let objArr = []
+    //     for(let i of arr){
+    //         let item = i.split(':')
+    //         let hour = parseInt(item[0])*60*60*1000
+    //         let min = parseInt(item[1])*60*1000
+    //         let secondStr = item[2]
+    //         let second = parseInt(secondStr.split('.')[0])*1000
+    //         let haoSecond = parseInt(secondStr.split('.')[1])
+    //         let allTime = hour+min+second+haoSecond
+    //         objArr.push({
+    //             name:i,
+    //             time:allTime
+    //         })
+    //     }
+    //     objArr.sort((a,b)=>a.time-b.time)
+    //     for(let i of objArr){
+    //         console.log(i.name);
+    //     }
+    // }
+    // test(arr)
+
+
+    // 英文输入法
+    // let str = 'I love you'
+    // let str2 = 'He'
+    // let str = 'The furthest distance in the world,Is not between life and death,But when I stand in front or you,Yet you don\'t know that I love you.'
+    // let str2 = 'f'
+    // function test(str){
+    //     let arr = str.split(' ').map(e=>{
+    //         if(e.indexOf('\'')>-1){
+    //             let wordStr = e.split('\'')
+    //             console.log(wordStr[0] + ' ' + wordStr[1]);
+    //             return wordStr[0] + ' ' + wordStr[1]
+    //         }
+    //         if(e.indexOf(',')>-1){
+    //             let wordStr = e.split(',')
+    //             console.log(wordStr[0] + ' ' + wordStr[1]);
+    //             return wordStr[0] + ' ' + wordStr[1]
+    //         }
+    //         if(e.indexOf('.')>-1){
+    //             let wordStr = e.split('.')
+    //             console.log(wordStr[0] + ' ' + wordStr[1]);
+    //             return wordStr[0] + ' ' + wordStr[1]
+    //         }
+    //         console.log(e)
+    //         return e
+    //     })
+    //
+    //     arr = format(arr)
+    //     let newArr = arr.filter(e=>{
+    //         let len = str2.length
+    //         let cur = ''
+    //         for(let i=0;i<len;i++){
+    //             cur+=e[i]
+    //         }
+    //         return cur === str2
+    //     })
+    //     newArr = [...new Set(newArr)]
+    //     let result = newArr.length>0?newArr.join(' '):str2
+    //     console.log(result);
+    // }
+    // function format(arr){
+    //     let index = arr.findIndex(e=>{
+    //         return e.indexOf(' ')>-1
+    //     })
+    //     console.log(index)
+    //     if(index>-1){
+    //         let item = arr[index].split(' ').filter(e=>e)
+    //         arr.splice(index,1,...item)
+    //         // return format(arr)
+    //     }
+    //     console.log(arr);
+    //     return arr
+    // }
+    // test(str)
+
+    // 学生方阵
+    // female/male ???这题应该是这个意思 M就是男吧 反对角线咋算，求大神指点
+    // let n = 3
+    // let k = 4
+    // let maxLen = 0
+    // let arr = [
+    //     ['F','M','M','M'],
+    //     ['F','M','M','F'],
+    //     ['M','M','F','M'],
+    //     ['M','M','F','M']
+    // ]
+    // // 横的
+    // for(let i of arr){
+    //     maxLen = Math.max(sameArr(i),maxLen)
+    // }
+    // // // 竖的
+    // let nums  = arr[0].length
+    // for(let j=0;j<nums;j++){
+    //     let newArr = []
+    //     for(let i of arr){
+    //         newArr.push(i[j])
+    //     }
+    //     console.log(newArr);
+    //     maxLen = Math.max(sameArr(newArr),maxLen)
+    // }
+    // // 对角
+    // let record = new Map()
+    // for(let i=0;i<arr.length;i++){
+    //     for(let j=0;j<nums;j++){
+    //         let key = j+i
+    //         if (!record.has(key)){
+    //             record.set(key, [])
+    //         }
+    //         record.get(key).push(arr[i][j])
+    //     }
+    // }
+    // console.log(record);
+    // for(let [i,nums] of record.entries()){
+    //     maxLen = Math.max(sameArr([...nums]),maxLen)
+    // }
+    // console.log(maxLen)
+    // //计算一维数组男生相连最大值
+    // function sameArr(arr){
+    //     let maxLen = 0
+    //     let left = 0
+    //     let right = 0
+    //     while (right<arr.length) {
+    //         right++
+    //         if(arr[left]===arr[right] && arr[right] === 'M'){
+    //             maxLen = Math.max(right - left + 1,maxLen)
+    //         }else {
+    //             left = right
+    //         }
+    //     }
+    //     return maxLen
+    // }
+
+    // let str = 'I am a developer.'
+    // let start = 0
+    // let end = 3
+    // function test (str,start,end) {
+    //     let arr = str.split(' ')
+    //     let copyArr = JSON.parse(JSON.stringify(arr))
+    //     let newArr = copyArr.splice(start,end - start + 1).reverse()
+    //     console.log(newArr);
+    //     arr.splice(start,end-start + 1,...newArr)
+    //     console.log(arr.join(' '));
+    // }
+    // test(str,start,end)
+
+    let num = Math.pow(1.1, 6)
+
+    console.log(num.toString(10));
+
+
+</script>
+</html>

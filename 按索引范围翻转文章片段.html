@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let str = 'I am a developer.'
+    let start = 0
+    let end = 3
+
+    function text() {
+        let arr = str.split(' ')
+        let ffff = JSON.parse(JSON.stringify(arr))
+        let newArr = ffff.splice(start, end-start+1).reverse()
+
+        arr.splice(start, end-start+1, ...newArr)
+
+        console.log(arr.join(' '));
+    }
+    text()
+</script>
+
+</body>
+</html>

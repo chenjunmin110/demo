@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr1 = [
+        {age: 5,name:88},
+        {age: 5,name:'的骄傲离开家'},
+        {age: 5,name:'rrr'},
+        {age: 5,name:6}
+    ]
+    arr1.sort((a,b) => a.name-b.name)
+    console.log(arr1);
+
+    const arr = [
+        { id: 1, name: 'Alice' },
+        { id: 2, name: 'Bob' },
+        { id: 1, name: 'Alice' },
+        { id: 3, name: 'Cathy' },
+    ];
+
+    const set = new Set(arr.map(JSON.stringify));
+    console.log(set)
+    const uniqueArr = Array.from(set).map(JSON.parse);
+
+    console.log(uniqueArr);
+    const arr2 = [1, 2, 3,2,4]
+    const ff = [...new Set(arr2)]
+    const ff1 = arr2.filter((item, index) => arr2.indexOf(item) === index)
+    const ff2 = arr2.reduce((acd, cur) => {
+        if (!acd.includes(cur)) {
+            acd.push(cur)
+        }
+        return acd
+    }, [])
+    const ff3 = []
+    const map = new Map
+    for (let val of arr2) {
+        if (!map.has(val)) {
+            map.set(val, true)
+            ff3.push(val)
+        }
+    }
+    console.log(ff,ff1,ff2,ff3, '5555')
+</script>
+</html>

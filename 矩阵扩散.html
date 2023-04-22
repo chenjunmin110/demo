@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let str = '4,4,0,0,3,3'
+
+    let strArr = str.split(',').map(e=>Number(e))
+
+    let num = strArr[0]
+    let num2 = strArr[1]
+    let first = strArr[2]
+    let first2 = strArr[3]
+    let second = strArr[4]
+    let second2 = strArr[5]
+    console.log(str);
+    let arr = []
+    for (let i = 0; i<num; i++) {
+        let item = []
+        for (let i = 0;i<num2;i++) {
+            item.push(0)
+        }
+        arr.push(item)
+    }
+    arr[first][first2] = 1
+    arr[second][second2] = 1
+    let time = 0;
+
+    text()
+
+    function text () {
+        while (!isZero()) {
+
+            let arr2 = JSON.parse(JSON.stringify(arr))
+            for(let i=0;i<arr.length;i++){
+                for(let o=0;o<arr[i].length;o++){
+                    if(arr[i][o]===1){
+                        arr2[i][o]=1
+                        // 上
+                        if(i-1>=0){
+                            arr2[i-1][o] = 1
+                        }
+                        // 下
+                        if(i+1<=arr.length-1){
+                            arr2[i+1][o] = 1
+                        }
+                        // 左
+                        if(o-1>=0){
+                            arr2[i][o-1] = 1
+                        }
+                        // 右
+                        if(o+1<=arr[i].length-1){
+                            arr2[i][o+1] = 1
+                        }
+                    }
+                }
+            }
+            arr = arr2
+            time++
+        }
+    }
+
+
+    function isZero () {
+        for (const val of arr) {
+            for (const i of val) {
+                if (i === 0) {
+                    return false
+                }
+            }
+
+        }
+        return true
+    }
+    console.log(time)
+
+
+</script>
+</body>
+</html>

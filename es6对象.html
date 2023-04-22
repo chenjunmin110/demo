@@ -15,36 +15,36 @@
     ['title', 'Author']
   ]);
 
-  console.log(map);
+  console.log(map); // {'name' => '张三', 'title' => 'Author'}
 
-  console.log(map.get('name'));
-  console.log(map.set('name', '3333'));
-  console.log(map.has('name'));
+  console.log(map.get('name')); // 张三
+  console.log(map.set('name', '3333')); // {'name' => '3333', 'title' => 'Author'}
+  console.log(map.has('name')); //true
 
   for (let [key, value] of map.entries()) {
-    console.log(key, value)
+    console.log(key, value) // name 3333,title Author
   }
   
   for (let item of map.keys()) {
-    console.log(item)
+    console.log(item) //name titile
   }
 
   for (let item of map.values()) {
-    console.log(item)
+    console.log(item) //Author
   }
   // objaa.hasOwnProperty，对象上有没有这个属性
   objaa = {
     a: '5555',
     b: 'bbbbb'
   }
-  console.log(objaa.hasOwnProperty('a'));
-  console.log(Object.getOwnPropertyNames(objaa));
-  console.log(Object.keys(objaa)) // ['b']
-  console.log(Object.values(objaa)) // ['3']
-  console.log(Object.entries(objaa))
+  console.log(objaa.hasOwnProperty('a')); // true
+  console.log(Object.getOwnPropertyNames(objaa)); // ['a', 'b']
+  console.log(Object.keys(objaa)) // ['a', 'b']
+  console.log(Object.values(objaa)) // ['5555', 'bbbbb']
+  console.log(Object.entries(objaa)) // [Array(2), Array(2)] //['a', '5555']
   
   let ooo = Object.assign({}, objaa, {c: '44444'})
-  console.log(ooo);
+  console.log(ooo); // {a: '5555', b: 'bbbbb', c: '44444'}
 
 
 </script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let str1 = '64:2,128:1,32:4,1:128'
+    let str2 = '50,36,64,128,127'
+
+    function text () {
+        let arr = []
+
+        str1.split(',').map(e=>{
+            let m = parseInt(e.split(':')[0])
+            let n = parseInt(e.split(':')[1])
+
+            for (let i = 0; i<n; i++) {
+                arr.push(m)
+            }
+        })
+        arr.sort((a,b)=>a-b)
+        console.log(arr);
+
+        let resultArr = []
+        let str2Arr = str2.split(',').map(e=>Number(e))
+
+        for (let val of str2Arr) {
+            resultArr.push(dele(val, arr))
+        }
+
+
+
+        console.log(resultArr.join(' '));
+    }
+
+    function dele(num, arr) {
+        for (let i=0;i<arr.length;i++) {
+            if (num<arr[i]) {
+                arr = arr.splice(i, 1)
+                return true
+            }
+        }
+        return false
+    }
+
+    text()
+
+</script>
+
+</body>
+</html>

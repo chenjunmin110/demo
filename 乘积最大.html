@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    let str = 'iwdvpbn,hk,iuop,iikd,kadgpf'
+    let arrAD = []
+
+    function text () {
+        let arr = str.split(',')
+        let max = 0
+        let num = 0
+        while (num<arr.length) {
+            for (let i =0; i<arr.length;i++) {
+                if (i === num) {
+                    continue
+                }
+                let strArr1 = arr[num].split('')
+                let strArr2 = arr[i].split('')
+                let flag = true
+
+                for(let j =0;j<strArr1.length; j++) {
+                    if (strArr2.findIndex(e =>e === strArr1[j]) > -1) {
+                        flag =false
+                        break
+                    }
+                }
+                if (flag) {
+                    max = Math.max(strArr2.length*strArr1.length, max)
+                }
+            }
+            num++
+        }
+        console.log(max);
+    }
+    text()
+</script>
+
+</body>
+</html>

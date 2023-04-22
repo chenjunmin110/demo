@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    let arr = [
+        '1:1:09.211',
+        '08:01:22.0',
+        '23:41:08.023'
+    ]
+
+    function text () {
+        let result = []
+        let ff = []
+
+        for (let val of arr) {
+            val.split(':')
+            let houre = parseInt(val[0])*60*60*1000
+            let minute = parseInt(val[1])*60*1000
+            let s = parseInt(val[2].split('.'))*1000
+            let hao = parseInt(val[2].split('.'))
+
+            let sum = houre+minute+s+hao
+            result.push({
+                key: val,
+                sum: hao
+            })
+
+
+
+
+        }
+        result.sort((a,b)=>a.sum-b.sum)
+        for (let val of result) {
+            ff.push(val.key)
+        }
+        console.log(ff.join(' '));
+    }
+
+    text()
+</script>
+
+</body>
+</html>

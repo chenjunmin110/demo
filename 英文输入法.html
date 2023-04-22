@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let str = 'The furthest distance in the world,Is not between life and death,But when I stand in front or you,Yet you don\'t know that I love you.'
+    let str2 = 'f'
+
+    function text() {
+        let arr = str.split(' ').map(item=>{
+            if (item.indexOf(',') != -1) {
+                return item.split(',')[0] + ' '+item.split(',')[1]
+            }
+            else if (item.indexOf('.') != -1) {
+                return item.split('.')[0] + ''+item.split('.')[1]
+            }
+            else if (item.indexOf('\'') != -1) {
+                return item.split('\'')[0] + ' '+item.split('\'')[1]
+            } else {
+                return item
+            }
+
+        })
+
+        arr = format(arr)
+
+        let ff = arr.filter(item=>{
+            let leng =str2.length
+            let cur = ''
+            for (let i =0;i<leng; i++) {
+                cur += item[i]
+            }
+            return cur == str2
+        })
+
+        ff = [...new Set(ff)].sort()
+
+        if (ff.length > 0) {
+            console.log(ff.join(' '));
+        } else {
+            console.log(str2)
+        }
+
+
+    }
+
+    function format(arr) {
+        let index = arr.findIndex(item=>item.indexOf(' ') != -1)
+        if (index > 0) {
+            let item = arr[index].split(' ').map(e=>e)
+
+            arr.splice(index, 1, ...item)
+            return format(arr)
+        }
+
+        return arr
+    }
+    text()
+</script>
+
+</body>
+</html>

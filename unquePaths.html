@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function unquePaths(m, n) {
+
+        let dp = [];
+        for (let i = 0; i < m; i++) {
+            dp[i] = []
+            for (let j = 0; j < n; j++) {
+                // 特殊情况：到达(0, 0)这个点只有一种路径
+                if (i == 0 || j == 0) {
+                    dp[i][j] = 1;
+                } else {
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+                }
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
+
+    console.log(unquePaths(4, 4));
+
+
+    let dd = 'abcdef'
+
+    let ff = dd.substr(1,3)
+    let gg = dd.substring(1, 3)
+    console.log(ff, gg);
+
+    let dd1 = 'abcdef'.split('')
+    let ff1 = dd1.splice(1,3)
+    let gg1 = dd1.slice(1, 3)
+    console.log(ff1, gg1);
+</script>
+</html>

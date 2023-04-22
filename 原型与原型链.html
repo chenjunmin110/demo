@@ -24,19 +24,19 @@
   console.log(person1.name);
   person1.fn() // 28
 
-  console.log(person1);
+  console.log(person1); //Person {age: 28}
 
-  console.log(Person.prototype.constructor === Person);
+  console.log(Person.prototype.constructor === Person); //true
 
   // 从当前实例属性去找，没有再去找原型链上去找，
-  console.log('person1.__proto__:',person1.__proto__);
-  console.log('Person.prototype:',Person.prototype);
+  console.log('person1.__proto__:',person1.__proto__); //{age: 18, name: '小明', fn: ƒ, constructor: ƒ}
+  console.log('Person.prototype:',Person.prototype); //{age: 18, name: '小明', fn: ƒ, constructor: ƒ}
   
-  console.log('Person.prototype.__proto__:',Person.prototype.__proto__);
-  console.log('Object.prototype:',Object.prototype);
+  console.log('Person.prototype.__proto__:',Person.prototype.__proto__); //{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+  console.log('Object.prototype:',Object.prototype); // {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
 
-  console.log('Object.prototype.__proto__:',Object.prototype.__proto__);
-  
+  console.log('Object.prototype.__proto__:',Object.prototype.__proto__); // null
+
   
   
 </script>

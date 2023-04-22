@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let arr = [1,3,3,3,2,4,4,4,5]
+
+    let objArr = []
+
+    for (let [index, i] of Object.entries(arr)) {
+        let hasItem = false;
+        for (let val of objArr) {
+            // console.log(val)
+            if (val.value === i) {
+                hasItem = true;
+                val.index++
+            }
+        }
+        if (!hasItem) {
+            objArr.push({
+                index: 1,
+                value: i
+            })
+        }
+
+    }
+    console.log(objArr)
+    objArr.sort((a,b)=>b.index-a.index)
+    let resultArr = []
+
+    for (let val of objArr) {
+        resultArr.push(val.value)
+    }
+    console.log(resultArr.join(' '))
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function test(){
+        let str = '2.3,3,5.6,7,6;11,3,8.6,25,1;0.3,9,5.3,66,7.8;1,3,2,7,5;340,670,80.6;<=,<=,<='
+        let arr = str.split(';')
+        let budengshiArr = arr[arr.length - 1].split(',')
+        let mubiaoArr = arr[arr.length - 2].split(',').map(e=>Number(e))
+        let bianliangArr = arr[arr.length - 3].split(',').map(e=>Number(e))
+        let xishuArr = JSON.parse(JSON.stringify(arr)).splice(0,arr.length-3)
+        console.log(xishuArr,bianliangArr,mubiaoArr,budengshiArr);
+        let resultBoolean = []
+        let result = []
+        for(let [idx,i] of xishuArr.entries()){
+            let itemArr = i.split(',').map(e=>Number(e))
+            let sum = 0
+            for(let [jdx,j] of itemArr.entries()){
+                sum+=j*bianliangArr[jdx]
+            }
+            let fn = new Function (`return ${sum}${budengshiArr[idx]}${mubiaoArr[idx]}`)
+            resultBoolean.push(fn())
+            result.push(Math.abs(sum-mubiaoArr[idx]))
+        }
+        let flag = ''
+        for(let i of resultBoolean){
+            if(flag===''){
+                flag = i
+            }else {
+                flag = i&&flag
+            }
+        }
+        console.log(flag + ' ' + parseInt(Math.max(...result)))
+    }
+    test()
+
+
+
+</script>
+
+</body>
+</html>
