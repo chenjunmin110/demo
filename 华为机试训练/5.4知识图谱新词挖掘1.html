@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let str = 'qwebaewqfjjg'
+    let word = 'qwe'
+    let len1= str.length
+    let len2 = word.length
+    let ff
+    let total = 0
+    for (let i =0; i<len1; i++) {
+        ff = str.substr(i, 3)
+        if (ff.length === len2 && ff.split('').sort().join('') === word.split('').sort().join('')) {
+            total+=1
+        }
+    }
+    console.log(total);
+</script>
+</html>

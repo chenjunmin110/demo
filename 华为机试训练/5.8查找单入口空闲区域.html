@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input2 = [5, 5]
+    let input = [
+        ["X", "X", "X", "O", "X"],
+        ["X", "O", "O", "X", "X"],
+        ["X", "X", "X", "X", "X"],
+        ["X", "X", "O", "X", "X"],
+        ["X", "X", "X", "X", "X"]
+    ], max = 0, entryInfo = [0, 0], allDate = [], count = 0;
+    //entryInfo 存储开头坐标 allDate 输出信息
+    let m = input2[0]; n = input2[1];
+    let res = input;
+    //判断以此为入口的单入口区域大小
+    // i 开始横坐标
+    // j 开始纵坐标
+    // aresDress 单入口区域存放数组
+    function func (x, y, areaDress) {
+        //判断点的位置是否在边缘区域 在 则 count++
+        if (x == 0 || x == m - 1 || y == 0 || y == n - 1) {
+            count += 1;
+            entryInfo = [x, y];
+        }
+        //判断上下左右的点是否存在连通的O;递归
+        if (x < m - 1) {
+            if (res[x + 1][y] == "O") {
+                res[x + 1][y] = "X"
+                areaDress.push([x + 1, y])
+                func(x + 1, y, areaDress)
+            }
+        }
+        if (y < n - 1) {
+            if (res[x][y + 1] == "O") {
+                res[x][y + 1] = "X"
+                areaDress.push([x, y + 1])
+                func(x, y + 1, areaDress)
+            }
+        }
+        if (x - 1 >= 0) {
+            if (res[x - 1][y] == "O") {
+                res[x - 1][y] = "X"
+                areaDress.push([x - 1, y])
+                func(x - 1, y, areaDress)
+            }
+        }
+        if (y - 1 >= 0) {
+            if (res[x][y - 1] == "O") {
+                res[x][y - 1] = "X"
+                areaDress.push([x, y - 1])
+                func(x, y - 1, areaDress)
+            }
+        }
+    }
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            //判断是否为开始字符
+            if (res[i][j] == "O") {
+                //放置单入口初始坐标
+                let aresDress = [];
+                aresDress.push([i, j]);
+                //赋值 改变数组 aresDress 当前单入口区域
+                res[i][j] = "X";
+                func(i, j, aresDress)
+                // count = 1 只存在单入口 count = 0 不存在入口  count !=0&&!=1 存在多个入口
+                // allDate 缓存数组
+                if (count == 1) {
+                    allDate = []
+                    if (max < aresDress.length) {
+                        max = aresDress.length;
+                        allDate.push(...entryInfo, max)
+                    }
+                }
+                //初始化长度以及初始化单入口区域开头坐标
+                count = 0;
+                entryInfo = [0, 0]
+            }
+        }
+    }
+    //只存在边缘点
+    if (allDate[2] == 1) console.log('=>', allDate.join(' '));
+//有多个符合要求的最大单入口区域
+    else if (max != 0) console.log('max=>', max);
+//不存在单入口区域
+    else console.log('Null=>',);
+</script>
+</html>
