@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = '1 1 0 1 2 1 0'.replace('2', '-1').split(' ').map(Number)
+    let max = 0
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i+1; j < arr.length; j++) {
+            let arr11 = arr.slice(i, j)
+            if (!arr11.includes(-1)) {
+                if (max < ff(arr11)) {
+                    max = ff(arr11)
+                }
+            }
+        }
+    }
+    console.log(max)
+
+    function ff (arr) {
+        let sum = 0
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i]
+        }
+        return sum
+    }
+</script>
+</html>

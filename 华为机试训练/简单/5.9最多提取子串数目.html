@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let str = 'aaa'
+    let str2 = 'a'
+    let num = []
+
+    function ff (str, str2) {
+        let arr = []
+        for (let i = 0; i<str.length; i++) {
+            for (let j = 0; j<str.length; j++) {
+                if (str[i] === str2[j]) {
+                    arr.push(i)
+                    str.splice(i, 1)
+                    if (arr.length === str2.length) {
+                        num.push(arr)
+                        ff(str,str2)
+                    }
+                }
+            }
+        }
+    }
+    ff(str.split(''), str2.split(''))
+    console.log(num.length);
+</script>
+</html>

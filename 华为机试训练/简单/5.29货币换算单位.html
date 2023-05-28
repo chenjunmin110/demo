@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input = [
+        [4],
+        ['100CNY101fen'],
+        ['100HKD102cents'],
+        ['100JPY103sen'],
+        ['100EUR104eurocents'],
+        ['100GBP105pence']
+    ], sum = 0;
+    input.shift()
+    console.log('input=>', input);
+    for (let i = 0; i < input.length; i++) {
+        console.log('input[i]=>', input[i]);
+        let count = 0;
+        let a = JSON.stringify(input[i]).match(/[a-zA-Z]+|[0-9]+(?:\.[0-9]+|)/g);
+        console.log('a=>', a);
+        switch (a[1]) {
+            case 'CNY':
+                count = (parseInt(a[0]) + parseInt(a[2]) / 1000) * 1
+                break;
+            case 'HKD':
+                count = (parseInt(a[0]) + parseInt(a[2]) / 1000) / 1.23
+                break;
+            case 'JPY':
+                count = (parseInt(a[0]) + parseInt(a[2]) / 1000) / 18.25
+                break;
+            case 'EUR':
+                count = (parseInt(a[0]) + parseInt(a[2]) / 1000) / 0.14
+                break;
+            case 'GBP':
+                count = (parseInt(a[0]) + parseInt(a[2]) / 1000) / 0.12
+                break;
+        }
+        sum += count
+    }
+    console.log('sum=>', parseInt(sum));
+</script>
+</html>

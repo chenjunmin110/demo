@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  let arr = [1,2,3,1,4]
+
+  let map = new Map()
+  let max = -1
+  for (let i = 0; i < arr.length; i++) {
+    if (map.has(arr[i])) {
+      max = Math.max(max, i-map.get(arr[i]))
+    } else {
+        map.set(arr[i], i)
+    }
+  }
+
+  console.log(max)
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let str = "ABCDEFGGFFF 3".split(" ")
+    let n = Number(str[1])
+    let code = str[0]
+
+    let map = new Map()
+
+    for (let i = 0; i < code.length; i++) {
+        let index
+        console.log(parseInt(i / n));
+        if (parseInt(i/n)%2 ===0) {
+            index = i%n
+        } else {
+            index = n-1-i%n
+        }
+        console.log(index, 'index');
+
+        let c = code[i]
+
+        if (map.has(index)) {
+            map.set(index, map.get(index) + c)
+        } else {
+            map.set(index, c)
+        }
+
+
+    }
+
+    for (const mapElement of map.values()) {
+        console.log(mapElement)
+    }
+</script>
+</html>

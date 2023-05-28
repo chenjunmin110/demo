@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let str = "b eredderd bw bww bwwl bwwlm bwwln".split(' ')
+
+    let set = new Set()
+    for (let i = 0; i < str.length; i++) {
+        set.add(str[i])
+    }
+    console.log(set);
+
+    let ant = ''
+    for (let i = 0; i < str.length; i++) {
+        if (check(str[i], set)) {
+            if (str[i].length > ant.length) {
+                ant = str[i]
+            } else if (str[i].length == ant.length && str[i].localeCompare(ant) > 0) {
+                ant = str[i]
+            }
+        }
+    }
+    console.log(ant, 11111)
+
+    function check (s, set) {
+
+        for (let i = 0; i < s.length; i++) {
+            console.log(!set.has(s.substring(0, i + 1)));
+            if (!set.has(s.substring(0, i+1))) {
+                return false
+            }
+        }
+        return true
+
+    }
+</script>
+</html>

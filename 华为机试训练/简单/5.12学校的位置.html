@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let arr = [0,20,40,10,30]
+
+    let map = new Map()
+    let tt
+    let aee = []
+
+    for (let i = 0; i < arr.length; i++) {
+
+        tt = check(i, arr)
+    }
+    let max = 100000000
+    let iii = 0
+
+
+    console.log(aee);
+    for (let i = 0; i < aee.length; i++) {
+        if (max > aee[i][i]) {
+            max = aee[i][i]
+            iii = i
+        }
+    }
+    console.log(arr[iii]);
+
+    function check (n, arr) {
+        let sum = 0
+        let map1 = new Map()
+        for (let i = 0; i < arr.length; i++) {
+            if (i !== n) {
+                sum += Math.abs(arr[i] -arr[n])
+                map1.set(n, sum)
+            }
+        }
+        aee.push(Object.fromEntries(map1.entries()))
+
+
+    }
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]];
+    for (let i = 0; i < input.length; i++) {
+        let a = input[i]
+        //首行设置
+        let arr = ['R']
+        //开始递归
+        func(a[0] - 1, a[1] - 1, arr);
+    }
+    //target 横向 第n个字符串
+    //index 纵向 第几个字符N
+    //arr 当前数组
+    //pollCount 循环次数
+    function func (target, index, arr, pollCount = 1) {
+        middle = [];
+        //循环次数与第几个字符串的判断
+        if (pollCount <= target) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] == 'R') {
+                    middle.push('B')
+                } else {
+                    middle.push('R')
+                }
+            }
+            //利用concat进行数组链接 将数组转换为字符串
+            func(target, index, arr.concat(middle), pollCount + 1)
+        } else {
+            //横向遍历数组
+            for (let j = 0; j < arr.length; j++) {
+                //输出结果
+                if (j == index) console.log('=>', arr[j]);;
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+
+    let input1 = '1.3.11-S2',
+        input2 = '1.3.11-S6',
+        res = [],
+        r = 0,
+        l = 0,
+        index = 0;
+    //需要注意的是reduce进行数组就链接自己
+    let a = input1.split(".").map(item => item.split("-")).reduce((a, b) => {
+        return a.concat(b)
+    });
+    let b = input2.split(".").map(item => item.split("-")).reduce((a, b) => {
+        return a.concat(b)
+    });
+    console.log(a)
+    for (let i = 0; i < 4; i++) {
+        if (!func(a[i], b[i], i)) break;
+    }
+    //a input1的比较序号
+    //b input2的比较序号
+    //index 判断比较方式是比较大小还是比较字典序
+    function func (a, b, index) {
+        if (!!a && !!b) {
+            if (a == b) {
+                console.log('继续=>',);
+                return true
+            } else {
+                if (index = 3) console.log('不缺失,正常输出', a > b ? input1 : input2);
+                else console.log('不缺失,正常输出', parseInt(a) > parseInt(b) ? input1 : input2);
+                return false
+            }
+        } else {
+            if (!!a) console.log('[input2]缺失', input1);
+            else if (!!b) console.log('[input1]缺失', input2);
+            else console.log('双方缺失,输出前者', input1);
+            return false
+        }
+
+    }
+</script>
+</html>

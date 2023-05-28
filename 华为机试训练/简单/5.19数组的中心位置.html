@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+    let str = '2 5 3 6 5 6'.split(' ').map(Number)
+
+    for (let i = 0; i < str.length; i++) {
+        if (fun(i, str)=== fun(str.length-i, str)) {
+            console.log(i)
+        }
+    }
+
+    function fun(i, str) {
+        let s1 = str.slice(0, i)
+        let sum = 1
+        for (let i = 0; i < s1.length; i++) {
+            sum *= s1[i]
+        }
+        return sum
+    }
+</script>
+</html>

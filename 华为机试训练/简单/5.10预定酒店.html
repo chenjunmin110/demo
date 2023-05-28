@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let arr = '30 30 200 500 70 300'.split(' ').map(Number).sort((a,b)=>b-a)
+    let n = 3
+    let dd = 1000
+
+    let res = []
+
+    for (let i = 0; i < arr.length; i++) {
+        res.push([arr[i], Math.abs(dd - arr[i])])
+    }
+    console.log(res);
+    // res.sort((a, b) => {
+    //     b[1]- a[1]
+    // })
+    let dd1 = res.slice(0, n)
+    dd1 = dd1.map(item => item[0])
+    console.log(dd1);
+</script>
+</html>

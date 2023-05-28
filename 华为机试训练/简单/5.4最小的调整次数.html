@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+    function main(input_strs) {
+        var queue = new Array()
+        let flag = true
+        let result = 0
+        for (let i = 0; i < input_strs.length; i++) {
+            var input_str = input_strs[i]
+            if (input_str.startsWith("tail add")) {
+                queue.push(input_str)
+            } else if (input_str.startsWith("head add")) {
+                if (queue.length && flag) {
+                    flag = false
+                }
+                queue.push(input_str)
+            } else {
+                if (!queue.length) {
+                    continue
+                }
+                if (!flag) {
+                    result++
+                    flag = true
+                }
+                queue.pop(input_str)
+            }
+            console.log(queue);
+        }
+        console.log(result)
+    }
+
+    main(["head add 1",
+        "tail add 2",
+        "remove",
+        "head add 3",
+        "tail add 4",
+        "head add 5",
+        "remove",
+        "remove",
+        "remove",
+        "remove"])
+</script>
+</html>
