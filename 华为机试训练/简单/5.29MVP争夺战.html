@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input = "3 3 2 3 3 1 3 1 1 1 1 1 1"
+    let input1 = 9, sum = 0, res = [], result = [], fially = []
+    //填充数组 题目规定数组最大长度为50
+    let cachesList = new Array(50).fill(0)
+    let array = input.split(" ")
+    let len = array.length;
+    func(array, len)
+    function func (array, len) {
+        array.map(item => sum += parseInt(item))
+        //i 为得分人数
+        for (let i = len; i >= 2; i--) {
+            //只判断可以整除的数字
+            if (sum % i != 0) continue;
+            //判断当前得分是否可以满足要求
+            if (share(array, len, i, sum / i, cachesList, sum / i, 1)) {
+                let a = [], sums = 0;
+                //整合全部结果进行筛选 偷懒做法 因为result已经将符合sum / i的值放到一起
+                //所以可以直接按顺序输出和为sum / i的值放到一起
+                //实在看不懂文字 把俩console.log()注释消掉就可以知道了
+                // console.log('result=>', result);
+                for (let j = 0; j < result.length + 1; j++) {
+                    if (sums < (sum / i)) {
+                        sums += parseInt(result[j])
+                        a.push(result[j])
+                    } else {
+                        res.push(a)
+                        a = []
+                        sums = 0
+                        sums += parseInt(result[j])
+                        a.push(result[j])
+                    }
+                }
+                //res为最终输出结果
+                console.log('res=>', res);
+            }
+        }
+    }
+    //array 原定数组
+    //len 原定数组长度
+    //target 原定分组后目标长度
+    //groupSum 分组目标值
+    //cachesList 选定数组缓存下标
+    //goal 当前需要获得的目标值
+    //groupId 当前已经获得的目标长度
+    function share (array, len, target, groupSum, cachesList, goal, groupId) {
+        if (goal < 0) return false;
+        //筛选已满足要求的数组
+        if (goal == 0) {
+            groupId++;
+            //重新赋值
+            goal = groupSum;
+            //原定分组后目标长度 == 当前已经获得的目标长度 输出结果
+            if (groupId == target + 1) return true;
+        }
+        for (let i = 0; i < len; i++) {
+            //筛选未选定数组缓存下标
+            if (cachesList[i] != 0) continue;
+            cachesList[i] = groupId + 1;
+            //利用数组特质 满足要求加入数组 未满足要求则从数组中输出
+            result.push(array[i])
+            //递归 是否有满足当前目标值的选项 cachesList用于存储已经获取的数组(用于表述球员数量)
+            if (share(array, len, target, groupSum, cachesList, goal - array[i], groupId)) return true;
+            result.pop()
+            //恢复缓存数组
+            cachesList[i] = 0
+        }
+    }
+</script>
+</html>

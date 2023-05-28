@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let input = [0, 1, 4, 5, 6, 7], arr1 = [], arr2 = []
+    let input1 = 3;
+    //边界值判定 若可用服务器数量少于任务请求数量 则返回-1
+    // if (input.length < input1) return -1
+    let count1 = 0, count2 = 0
+    // 遍历链路0-3，如果剩余可用的处理器数量为1个，则选择这个链路
+    for (let j = 0; j < input.length; j++) {
+        if (input[j] < 4) {
+            count1++
+        } else {
+            count2++
+        }
+    }
+    let len1 = count1, len2 = count2
+    for (let i = 0; i < Math.min(input1, Math.min(len1, len2)); i++) {
+        const res = selectChips(i) + selectChips(input1 - i)
+        console.log('res=>', res, i, input1 - i);
+        count1 = len1
+        count2 = len2
+    }
+    function selectChips (num) {
+        if (num == 0) return 1
+        if (num > 4) return 0
+        if (num === 1) {
+            if (count1 == 1) {
+                count1 = count1 - 1
+                console.log('0-3恰好有一个处理器=要一个>',);
+            }
+            else if (count2 == 1) {
+                count2 = count2 - 1
+                console.log('4-7恰好有一个处理器=要一个>',);
+            }
+            else if (count1 == 3) {
+                count1 = count1 - 1
+                console.log('0-3恰好有三个处理器=要一个>',);
+            }
+            else if (count2 == 3) {
+                count2 = count2 - 1
+                console.log('4-7恰好有三个处理器=要一个>',);
+            }
+            else if (count1 == 2) {
+                count1 = count1 - 1
+                console.log('0-3恰好有俩个处理器=要一个>',);
+            }
+            else if (count2 == 2) {
+                count2 = count2 - 1
+                console.log('4-7恰好有俩个处理器=要一个>',);
+            }
+            else if (count1 == 4) {
+                count1 = count1 - 1
+                console.log('0-3恰好有四个处理器=要一个>',);
+            }
+            else if (count2 == 4) {
+                count2 = count2 - 1
+                console.log('4-7恰好有四个处理器=要一个>',);
+            }
+            else {
+                console.log('一个都没=>',);
+                return 0
+            }
+            return 1;
+        } else if (num === 2) {
+            if (count1 == 2) {
+                count1 = count1 - 2
+                console.log('0-3恰好有俩个处理器=要俩个>',);
+            }
+            else if (count2 == 2) {
+                count2 = count2 - 2
+                console.log('4-7恰好有俩个处理器=要俩个>',);
+            }
+            else if (count1 == 4) {
+                count1 = count1 - 2
+                console.log('0-3恰好有四个处理器=要俩个>',);
+            }
+            else if (count2 == 4) {
+                count2 = count2 - 2
+                console.log('4-7恰好有四个处理器=要俩个>',);
+            }
+            else if (count1 == 3) {
+                count1 = count1 - 2
+                console.log('0-3恰好有三个处理器=要俩个>',);
+            }
+            else if (count2 == 3) {
+                count2 = count2 - 2
+                console.log('4-7恰好有三个处理器=要俩个>',);
+            }
+            else {
+                console.log('一个都没=>',);
+                return 0
+            }
+            // 剩余可用的处理器数量都不是2个或者4个，则返回空列表
+            return 1;
+        } else if (num === 3) {
+            // 遍历链路0-3，如果剩余可用的处理器数量为4个，则选择这个链路
+            if (count1 == 3) {
+                count1 = count1 - 3
+                console.log('0-3恰好有三个处理器=要三个>',);
+            }
+            else if (count2 == 3) {
+                count2 = count2 - 3
+                console.log('4-7恰好有三个处理器=要三个>',);
+            }
+            else if (count1 == 4) {
+                count1 = count1 - 3
+                console.log('0-3恰好有四个处理器=要三个>',);
+            }
+            else if (count2 == 4) {
+                count2 = count2 - 3
+                console.log('4-7恰好有四个处理器=要三个>',);
+            }
+            else {
+                console.log('一个都没=>',);
+                return 0
+            }
+            // 剩余可用的处理器数量都不是4个，则返回空列表
+            return 1;
+        }
+        else if (num === 4) {
+            // 遍历链路0-3，如果剩余可用的处理器数量为4个，则选择这个链路
+            if (count1 == 4) {
+                count1 = count1 - 4;
+                console.log('0-3恰好有四个处理器=要四个>',);
+            }
+            else if (count2 == 4) {
+                count2 = count2 - 4
+                console.log('4-7恰好有四个处理器=要四个>',);
+            }
+            else {
+                console.log('一个都没=>',);
+                return 0
+            }
+            // 剩余可用的处理器数量都不是4个，则返回空列表
+            return 1;
+        }
+    }
+</script>
+</html>

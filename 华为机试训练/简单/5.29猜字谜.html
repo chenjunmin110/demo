@@ -9,7 +9,25 @@
 </body>
 
 <script>
-    let str = 'bdni,wooood'
-    let str1 = 'bind,wrong,wood'
+    let str = 'bdni,wooood'.split(',')
+    let str1 = 'bind,wrong,wood'.split(',')
+
+    let map = new Map()
+
+    let arr = []
+
+    for (let i = 0; i < str.length; i++) {
+        let strArr = [...new Set(str[i].split(''))].sort().join('')
+        arr.push(strArr)
+        for (let j = 0; j < str1.length; j++) {
+            let strArr1 = [...new Set(str1[j].split(''))].sort().join('')
+            if (arr.includes(strArr1)) {
+                console.log(str1[j]);
+            }
+        }
+    }
+    console.log(arr)
+
+
 </script>
 </html>
